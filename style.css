@@ -1,5 +1,37 @@
+*{
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-weight: 100;
+}
 body{
   background-color: gainsboro;
+  padding: 0;
+  margin: 0;
+}
+header{
+  padding: 5px;
+  background-color: lightgrey;
+  text-align: left;
+  width: 100vw;
+  font-size: 3em;
+  opacity: 0.5;
+  position: static;
+}
+.background{
+  min-height: 100vh;
+  background-image: url("birth_of_venus.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+#userInput{
+  display: block;
+  margin-left: 40%;
+  margin-top: 25%;
+  height: 3vh;
+  width: 25vw;
+}
+#button{
+  margin-left: 50%;
+  margin-top: 1%;
 }
 .container{
   margin-left: auto;
@@ -38,4 +70,14 @@ body{
     flex-shrink: 1;
     min-width: 99%;
     min-height: 99%;
+}
+footer{
+  background-color: darkgrey;
+  position: fixed;
+  bottom: 0;
+  height: 2em;
+  width: 100%;
+  text-align: center;
+  opacity: 0.5;
+  line-height: 2em;
 }
