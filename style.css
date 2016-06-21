@@ -12,7 +12,7 @@ header{
   background-color: lightgrey;
   text-align: left;
   width: 100vw;
-  font-size: 3em;
+  font-size: 2.5em;
   opacity: 0.5;
   position: static;
 }
@@ -36,7 +36,7 @@ header{
 .container{
   margin-left: auto;
   margin-right: auto;
-  margin-top: 3%;
+  margin-top: 1%;
   height: 85vh;
   width: 85vw;
   border-style: solid;
@@ -46,7 +46,7 @@ header{
   background-color: ghostwhite;
 }
 .box{
-  background-color: white;
+  background-color: whitesmoke;
   border-style: groove;
   border-width: thin;
 }
