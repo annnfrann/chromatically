@@ -1,3 +1,41 @@
 body{
   background-color: gainsboro;
 }
+.container{
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 3%;
+  height: 85vh;
+  width: 85vw;
+  border-style: solid;
+  border-width: thin;
+  border-color: darkgrey;
+  border-radius: 2px;
+  background-color: ghostwhite;
+}
+.box{
+  background-color: white;
+  border-style: groove;
+  border-width: thin;
+}
+.container{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  padding: 5px;
+}
+.box{
+  width: 32%;
+  height: 32%;
+  margin: auto;
+  display: flex;
+  padding: 2px;
+}
+.box img {
+    object-fit: scale-down;
+    justify-content: center;
+    flex-shrink: 1;
+    min-width: 99%;
+    min-height: 99%;
+}
