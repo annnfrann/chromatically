@@ -3,9 +3,11 @@
   font-weight: 100;
 }
 body{
-  background-color: gainsboro;
   padding: 0;
   margin: 0;
+  background-image: url("birth_of_venus.png");
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 header{
   padding: 5px;
@@ -18,19 +20,16 @@ header{
 }
 .background{
   min-height: 100vh;
-  background-image: url("birth_of_venus.png");
-  background-size: cover;
-  background-repeat: no-repeat;
 }
 #userInput{
   display: block;
-  margin-left: 40%;
+  margin-left: 38%;
   margin-top: 25%;
   height: 3vh;
   width: 25vw;
 }
 #button{
-  margin-left: 50%;
+  margin-left: 48%;
   margin-top: 1%;
 }
 .container{

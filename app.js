@@ -1,37 +1,26 @@
 search = function search() {
-
-  // $("#button").click(function(){
-  //   var userInput = document.getElementById("userInput").value
-  //   $.get("http://annnfrann:banana@api.repo.nypl.org/api/v1/items/search?q=cats&publicDomainOnly=true", function(data, status){
-  //     console.log("data: ",  data)
-  //   })
-  // })
-
-  // $("#button").click(function(){
-  //   var userInput = document.getElementById("userInput").value
-  //   $.get("http://api.repo.nypl.org/api/v1/items/search.json?q=" + userInput, function(data, status){
-  //     console.log("data: ",  data)
-  //   })
-  // })
-
   $("#button").click(function(){
     var userInput = document.getElementById("userInput").value
-    $.ajax({
-      url: "http://annnfrann:banana@api.repo.nypl.org/api/v1/items/search?q=cats&publicDomainOnly=true",
-      headers: {
-        "Authorization": "Token token=wscle06au2nzk1ho"
-      },
-    success: function(result){
-      console.log(result);
-      alert("yay")
-    }});
+    console.log(userInput);
+    var settings = {
+      "async": true,
+      "crossDomain": true,
+      "url": "https://cors-anywhere.herokuapp.com/http://api.repo.nypl.org/api/v1/items/search?q=" + userInput + "&publicDomainOnly=true",
+      "method": "GET",
+      "headers": {
+        "token": "wscle06au2nzk1ho",
+        "x-requested-with": "text/html",
+        "authorization": "Basic YW5ubmZyYW5uOmJhbmFuYQ==",
+        "cache-control": "no-cache",
+        "postman-token": "b0daef8a-76a5-589f-3bc9-b55beda775b4"
+      }
+    }
+    $.ajax(settings).done(function (response) {
+      console.log(response.nyplAPI.response.result);
+    });
   });
-
 }
 search()
-// curl "http://api.repo.nypl.org/api/v1/items/search?q=cats&publicDomainOnly=true" -H 'Authorization: Token token="wscle06au2nzk1ho"'
-
-// http://loc.gov/pictures/search/?q=<query>&fo=json replace "<query" with the search term
 
 
 // NYPL authentication token: wscle06au2nzk1ho
