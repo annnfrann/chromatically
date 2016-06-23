@@ -1,10 +1,10 @@
-search = function search() {
+function search (){
   $("#button").click(function(){
     var userInput = document.getElementById("userInput").value
+    userInput = userInput.trim()
     if (userInput === "") {
       alert("pls search for a thing")
     } else {
-      console.log(userInput);
       var settings = {
         "async": true,
         "crossDomain": true,
@@ -19,295 +19,81 @@ search = function search() {
         }
       }
       $.ajax(settings).done(function (response) {
+        prepForResults()
         var result = response.nyplAPI.response.result
-        document.getElementById("background").innerHTML = "";
-        var header = document.createElement("header")
-        header.innerHTML = "hello"
-        document.getElementById("background").appendChild(header)
-        var container = document.createElement("div")
-        var setClass = document.createAttribute("class")
-        setClass.value = "container"
-        container.setAttributeNode(setClass)
-        document.getElementById("background").appendChild(container)
-        var footer = document.createElement("footer")
-        footer.innerHTML = "anna lewis made this. she worked hard."
-        document.getElementById("background").appendChild(footer)
-
         for (var i = 0; i < result.length; i++) {
           if (result[i].typeOfResource === "still image") {
-            if (i == 9) {
+            if (i === 9) {
               break
-            }else {
-              var box = document.createElement("div")
-              var createClass = document.createAttribute("class")
-              createClass.value = "box"
-              box.setAttributeNode(createClass)
-              document.getElementsByClassName("container")[0].appendChild(box)
-              var photo = document.createElement("img")
-              console.log(result[i].imageID);
-              photo.src = "http://images.nypl.org/index.php?id=" + result[i].imageID + "&t=w"
-              document.getElementsByClassName("box")[i].appendChild(photo)
+            } else {
+              appendImage(result[i], i);
             }
           }
         }
-        document.getElementsByClassName("box")[0].addEventListener("click", function(){
-          document.getElementById("background").innerHTML = "";
-          var header = document.createElement("header")
-          header.innerHTML = "hello"
-          document.getElementById("background").appendChild(header)
-          var results = document.createElement("div")
-          var makeClass = document.createAttribute("class")
-          results.setAttributeNode(makeClass)
-          makeClass.value = "results"
-          document.getElementById("background").appendChild(results)
-          var selectedImage = document.createElement("div")
-          var newClass = document.createAttribute("class")
-          selectedImage.setAttributeNode(newClass)
-          newClass.value = "selectedImage"
-          document.getElementsByClassName("results")[0].appendChild(selectedImage)
-          var finalImage = document.createElement("img")
-          finalImage.src = "http://images.nypl.org/index.php?id=" + result[0].imageID + "&t=w"
-          document.getElementsByClassName("selectedImage")[0].appendChild(finalImage)
-          var colorScheme = document.createElement("div")
-          var anotherClass = document.createAttribute("class")
-          colorScheme.setAttributeNode(anotherClass)
-          anotherClass.value = "colorScheme"
-          document.getElementsByClassName("results")[0].appendChild(colorScheme)
-          console.log(result[0].title);
-          var footer = document.createElement("footer")
-          footer.innerHTML = "anna lewis made this. she worked hard."
-          document.getElementById("background").appendChild(footer)
-        })
-        document.getElementsByClassName("box")[1].addEventListener("click", function(){
-          document.getElementById("background").innerHTML = "";
-          var header = document.createElement("header")
-          header.innerHTML = "hello"
-          document.getElementById("background").appendChild(header)
-          var results = document.createElement("div")
-          var makeClass = document.createAttribute("class")
-          results.setAttributeNode(makeClass)
-          console.log(results);
-          makeClass.value = "results"
-          document.getElementById("background").appendChild(results)
-          var selectedImage = document.createElement("div")
-          var newClass = document.createAttribute("class")
-          selectedImage.setAttributeNode(newClass)
-          newClass.value = "selectedImage"
-          document.getElementsByClassName("results")[0].appendChild(selectedImage)
-          var finalImage = document.createElement("img")
-          finalImage.src = "http://images.nypl.org/index.php?id=" + result[1].imageID + "&t=w"
-          document.getElementsByClassName("selectedImage")[0].appendChild(finalImage)
-          var colorScheme = document.createElement("div")
-          var anotherClass = document.createAttribute("class")
-          colorScheme.setAttributeNode(anotherClass)
-          anotherClass.value = "colorScheme"
-          document.getElementsByClassName("results")[0].appendChild(colorScheme)
-          console.log(result[1].title);
-          var footer = document.createElement("footer")
-          footer.innerHTML = "anna lewis made this. she worked hard."
-          document.getElementById("background").appendChild(footer)
-        })
-        document.getElementsByClassName("box")[2].addEventListener("click", function(){
-          document.getElementById("background").innerHTML = "";
-          var header = document.createElement("header")
-          header.innerHTML = "hello"
-          document.getElementById("background").appendChild(header)
-          var results = document.createElement("div")
-          var makeClass = document.createAttribute("class")
-          results.setAttributeNode(makeClass)
-          makeClass.value = "results"
-          document.getElementById("background").appendChild(results)
-          var selectedImage = document.createElement("div")
-          var newClass = document.createAttribute("class")
-          selectedImage.setAttributeNode(newClass)
-          newClass.value = "selectedImage"
-          document.getElementsByClassName("results")[0].appendChild(selectedImage)
-          var finalImage = document.createElement("img")
-          finalImage.src = "http://images.nypl.org/index.php?id=" + result[2].imageID + "&t=w"
-          document.getElementsByClassName("selectedImage")[0].appendChild(finalImage)
-          var colorScheme = document.createElement("div")
-          var anotherClass = document.createAttribute("class")
-          colorScheme.setAttributeNode(anotherClass)
-          anotherClass.value = "colorScheme"
-          document.getElementsByClassName("results")[0].appendChild(colorScheme)
-          console.log(result[2].title);
-          var footer = document.createElement("footer")
-          footer.innerHTML = "anna lewis made this. she worked hard."
-          document.getElementById("background").appendChild(footer)
-        })
-        document.getElementsByClassName("box")[3].addEventListener("click", function(){
-          document.getElementById("background").innerHTML = "";
-          var header = document.createElement("header")
-          header.innerHTML = "hello"
-          document.getElementById("background").appendChild(header)
-          var results = document.createElement("div")
-          var makeClass = document.createAttribute("class")
-          results.setAttributeNode(makeClass)
-          makeClass.value = "results"
-          document.getElementById("background").appendChild(results)
-          var selectedImage = document.createElement("div")
-          var newClass = document.createAttribute("class")
-          selectedImage.setAttributeNode(newClass)
-          newClass.value = "selectedImage"
-          document.getElementsByClassName("results")[0].appendChild(selectedImage)
-          var finalImage = document.createElement("img")
-          finalImage.src = "http://images.nypl.org/index.php?id=" + result[3].imageID + "&t=w"
-          document.getElementsByClassName("selectedImage")[0].appendChild(finalImage)
-          var colorScheme = document.createElement("div")
-          var anotherClass = document.createAttribute("class")
-          colorScheme.setAttributeNode(anotherClass)
-          anotherClass.value = "colorScheme"
-          document.getElementsByClassName("results")[0].appendChild(colorScheme)
-          console.log(result[3].title);
-          var footer = document.createElement("footer")
-          footer.innerHTML = "anna lewis made this. she worked hard."
-          document.getElementById("background").appendChild(footer)
-        })
-        document.getElementsByClassName("box")[4].addEventListener("click", function(){
-          document.getElementById("background").innerHTML = "";
-          var header = document.createElement("header")
-          header.innerHTML = "hello"
-          document.getElementById("background").appendChild(header)
-          var results = document.createElement("div")
-          var makeClass = document.createAttribute("class")
-          results.setAttributeNode(makeClass)
-          makeClass.value = "results"
-          document.getElementById("background").appendChild(results)
-          var selectedImage = document.createElement("div")
-          var newClass = document.createAttribute("class")
-          selectedImage.setAttributeNode(newClass)
-          newClass.value = "selectedImage"
-          document.getElementsByClassName("results")[0].appendChild(selectedImage)
-          var finalImage = document.createElement("img")
-          finalImage.src = "http://images.nypl.org/index.php?id=" + result[4].imageID + "&t=w"
-          document.getElementsByClassName("selectedImage")[0].appendChild(finalImage)
-          var colorScheme = document.createElement("div")
-          var anotherClass = document.createAttribute("class")
-          colorScheme.setAttributeNode(anotherClass)
-          anotherClass.value = "colorScheme"
-          document.getElementsByClassName("results")[0].appendChild(colorScheme)
-          console.log(result[4].title);
-          var footer = document.createElement("footer")
-          footer.innerHTML = "anna lewis made this. she worked hard."
-          document.getElementById("background").appendChild(footer)
-        })
-        document.getElementsByClassName("box")[5].addEventListener("click", function(){
-          document.getElementById("background").innerHTML = "";
-          var header = document.createElement("header")
-          header.innerHTML = "hello"
-          document.getElementById("background").appendChild(header)
-          var results = document.createElement("div")
-          var makeClass = document.createAttribute("class")
-          results.setAttributeNode(makeClass)
-          makeClass.value = "results"
-          document.getElementById("background").appendChild(results)
-          var selectedImage = document.createElement("div")
-          var newClass = document.createAttribute("class")
-          selectedImage.setAttributeNode(newClass)
-          newClass.value = "selectedImage"
-          document.getElementsByClassName("results")[0].appendChild(selectedImage)
-          var finalImage = document.createElement("img")
-          finalImage.src = "http://images.nypl.org/index.php?id=" + result[5].imageID + "&t=w"
-          document.getElementsByClassName("selectedImage")[0].appendChild(finalImage)
-          var colorScheme = document.createElement("div")
-          var anotherClass = document.createAttribute("class")
-          colorScheme.setAttributeNode(anotherClass)
-          anotherClass.value = "colorScheme"
-          document.getElementsByClassName("results")[0].appendChild(colorScheme)
-          console.log(result[5].title);
-          var footer = document.createElement("footer")
-          footer.innerHTML = "anna lewis made this. she worked hard."
-          document.getElementById("background").appendChild(footer)
-        })
-        document.getElementsByClassName("box")[6].addEventListener("click", function(){
-          document.getElementById("background").innerHTML = "";
-          var header = document.createElement("header")
-          header.innerHTML = "hello"
-          document.getElementById("background").appendChild(header)
-          var results = document.createElement("div")
-          var makeClass = document.createAttribute("class")
-          results.setAttributeNode(makeClass)
-          makeClass.value = "results"
-          document.getElementById("background").appendChild(results)
-          var selectedImage = document.createElement("div")
-          var newClass = document.createAttribute("class")
-          selectedImage.setAttributeNode(newClass)
-          newClass.value = "selectedImage"
-          document.getElementsByClassName("results")[0].appendChild(selectedImage)
-          var finalImage = document.createElement("img")
-          finalImage.src = "http://images.nypl.org/index.php?id=" + result[6].imageID + "&t=w"
-          document.getElementsByClassName("selectedImage")[0].appendChild(finalImage)
-          var colorScheme = document.createElement("div")
-          var anotherClass = document.createAttribute("class")
-          colorScheme.setAttributeNode(anotherClass)
-          anotherClass.value = "colorScheme"
-          document.getElementsByClassName("results")[0].appendChild(colorScheme)
-          console.log(result[6].title);
-          var footer = document.createElement("footer")
-          footer.innerHTML = "anna lewis made this. she worked hard."
-          document.getElementById("background").appendChild(footer)
-        })
-        document.getElementsByClassName("box")[7].addEventListener("click", function(){
-          document.getElementById("background").innerHTML = "";
-          var header = document.createElement("header")
-          header.innerHTML = "hello"
-          document.getElementById("background").appendChild(header)
-          var results = document.createElement("div")
-          var makeClass = document.createAttribute("class")
-          results.setAttributeNode(makeClass)
-          makeClass.value = "results"
-          document.getElementById("background").appendChild(results)
-          var selectedImage = document.createElement("div")
-          var newClass = document.createAttribute("class")
-          selectedImage.setAttributeNode(newClass)
-          newClass.value = "selectedImage"
-          document.getElementsByClassName("results")[0].appendChild(selectedImage)
-          var finalImage = document.createElement("img")
-          finalImage.src = "http://images.nypl.org/index.php?id=" + result[7].imageID + "&t=w"
-          document.getElementsByClassName("selectedImage")[0].appendChild(finalImage)
-          var colorScheme = document.createElement("div")
-          var anotherClass = document.createAttribute("class")
-          colorScheme.setAttributeNode(anotherClass)
-          anotherClass.value = "colorScheme"
-          document.getElementsByClassName("results")[0].appendChild(colorScheme)
-          console.log(result[7].title);
-          var footer = document.createElement("footer")
-          footer.innerHTML = "anna lewis made this. she worked hard."
-          document.getElementById("background").appendChild(footer)
-        })
-        document.getElementsByClassName("box")[8].addEventListener("click", function(){
-          document.getElementById("background").innerHTML = "";
-          var header = document.createElement("header")
-          header.innerHTML = "hello"
-          document.getElementById("background").appendChild(header)
-          var results = document.createElement("div")
-          var makeClass = document.createAttribute("class")
-          results.setAttributeNode(makeClass)
-          makeClass.value = "results"
-          document.getElementById("background").appendChild(results)
-          var selectedImage = document.createElement("div")
-          var newClass = document.createAttribute("class")
-          selectedImage.setAttributeNode(newClass)
-          newClass.value = "selectedImage"
-          document.getElementsByClassName("results")[0].appendChild(selectedImage)
-          var finalImage = document.createElement("img")
-          finalImage.src = "http://images.nypl.org/index.php?id=" + result[8].imageID + "&t=w"
-          document.getElementsByClassName("selectedImage")[0].appendChild(finalImage)
-          var colorScheme = document.createElement("div")
-          var anotherClass = document.createAttribute("class")
-          colorScheme.setAttributeNode(anotherClass)
-          anotherClass.value = "colorScheme"
-          document.getElementsByClassName("results")[0].appendChild(colorScheme)
-          console.log(result[8].title);
-          var footer = document.createElement("footer")
-          footer.innerHTML = "anna lewis made this. she worked hard."
-          document.getElementById("background").appendChild(footer)
-        })
       });
     }
   });
 }
 search()
+
+function appendImage(result, i) {
+  var box = document.createElement("div")
+  var createClass = document.createAttribute("class")
+  createClass.value = "box"
+  box.setAttributeNode(createClass)
+  document.getElementsByClassName("container")[0].appendChild(box)
+  var photo = document.createElement("img")
+  console.log(result.imageID);
+  photo.src = "http://images.nypl.org/index.php?id=" + result.imageID + "&t=w"
+  document.getElementsByClassName("box")[i].appendChild(photo)
+  doTheThing(result, i)
+}
+
+function prepForResults() {
+  document.getElementById("background").innerHTML = "";
+  var header = document.createElement("header")
+  header.innerHTML = "hello"
+  document.getElementById("background").appendChild(header)
+  var container = document.createElement("div")
+  var setClass = document.createAttribute("class")
+  setClass.value = "container"
+  container.setAttributeNode(setClass)
+  document.getElementById("background").appendChild(container)
+  var footer = document.createElement("footer")
+  footer.innerHTML = "anna lewis made this. she worked hard."
+  document.getElementById("background").appendChild(footer)
+}
+
+function doTheThing(result, i) {
+  document.getElementsByClassName("box")[i].addEventListener("click", function(){
+    document.getElementById("background").innerHTML = "";
+    var header = document.createElement("header")
+    header.innerHTML = "hello"
+    document.getElementById("background").appendChild(header)
+    var results = document.createElement("div")
+    var makeClass = document.createAttribute("class")
+    results.setAttributeNode(makeClass)
+    makeClass.value = "results"
+    document.getElementById("background").appendChild(results)
+    var selectedImage = document.createElement("div")
+    var newClass = document.createAttribute("class")
+    selectedImage.setAttributeNode(newClass)
+    newClass.value = "selectedImage"
+    document.getElementsByClassName("results")[0].appendChild(selectedImage)
+    var finalImage = document.createElement("img")
+    finalImage.src = "http://images.nypl.org/index.php?id=" + result.imageID + "&t=w"
+    document.getElementsByClassName("selectedImage")[0].appendChild(finalImage)
+    var colorScheme = document.createElement("div")
+    var anotherClass = document.createAttribute("class")
+    colorScheme.setAttributeNode(anotherClass)
+    anotherClass.value = "colorScheme"
+    document.getElementsByClassName("results")[0].appendChild(colorScheme)
+    console.log(result.title);
+    var footer = document.createElement("footer")
+    footer.innerHTML = "anna lewis made this. she worked hard."
+    document.getElementById("background").appendChild(footer)
+  });
+}
 
 
 // NYPL authentication token: wscle06au2nzk1ho
