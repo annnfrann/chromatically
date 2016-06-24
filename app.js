@@ -19,14 +19,18 @@ function search (){
         }
       }
       $.ajax(settings).done(function (response) {
-        prepForResults()
         var result = response.nyplAPI.response.result
-        for (var i = 0; i < result.length; i++) {
-          if (result[i].typeOfResource === "still image") {
-            if (i === 9) {
-              break
-            } else {
-              appendImage(result[i], i);
+        if (!result) {
+          alert("Your search returned 0 results, please try again with another")
+        } else {
+          prepForResults()
+          for (var i = 0; i < result.length; i++) {
+            if (result[i].typeOfResource === "still image") {
+              if (i === 9) {
+                break
+              } else {
+                appendImage(result[i], i);
+              }
             }
           }
         }
@@ -52,7 +56,7 @@ function appendImage(result, i) {
 function prepForResults() {
   document.getElementById("background").innerHTML = "";
   var header = document.createElement("header")
-  header.innerHTML = "hello"
+  header.innerHTML = '<a href="index.html">&nbsp;chromatically</a> <span><a href="/about.html">about</a></span>'
   document.getElementById("background").appendChild(header)
   var container = document.createElement("div")
   var setClass = document.createAttribute("class")
@@ -60,7 +64,7 @@ function prepForResults() {
   container.setAttributeNode(setClass)
   document.getElementById("background").appendChild(container)
   var footer = document.createElement("footer")
-  footer.innerHTML = "anna lewis made this. she worked hard."
+  footer.innerHTML = 'anna lewis made this. here is her <a href="https://github.com/annnfrann/">github</a>.'
   document.getElementById("background").appendChild(footer)
 }
 
@@ -68,7 +72,7 @@ function doTheThing(result, i) {
   document.getElementsByClassName("box")[i].addEventListener("click", function(){
     document.getElementById("background").innerHTML = "";
     var header = document.createElement("header")
-    header.innerHTML = "hello"
+    header.innerHTML = '<a href="index.html">&nbsp;chromatically</a> <span><a href="/about.html">about</a></span>'
     document.getElementById("background").appendChild(header)
     var results = document.createElement("div")
     var makeClass = document.createAttribute("class")
@@ -100,7 +104,7 @@ function doTheThing(result, i) {
     document.getElementsByClassName("results")[0].appendChild(colorScheme)
     console.log(result.title);
     var footer = document.createElement("footer")
-    footer.innerHTML = "anna lewis made this. she worked hard."
+    footer.innerHTML = 'anna lewis made this. here is her <a href="https://github.com/annnfrann/">github</a>.'
     document.getElementById("background").appendChild(footer)
   });
 }
