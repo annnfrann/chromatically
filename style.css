@@ -126,24 +126,19 @@ a{
   display: flex;
   flex-wrap: wrap;
 }
+.result1{
+}
+.result2{
+}
+.result3{
+}
+.result4{
+}
+.result5{
+}
 .colorResult{
   width: 20%;
   height: 100%;
-}
-.result1{
-  background-color: aliceblue;
-}
-.result2{
-  background-color: lemonchiffon;
-}
-.result3{
-  background-color: honeydew;
-}
-.result4{
-  background-color: lavender;
-}
-.result5{
-  background-color: lavenderblush;
 }
 .about{
   background-color: aliceblue;

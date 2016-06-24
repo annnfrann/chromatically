@@ -91,9 +91,6 @@ function doTheThing(result, i) {
     finalImage.src = "http://images.nypl.org/index.php?id=" + result.imageID + "&t=w"
     document.getElementsByClassName("selectedImage")[0].appendChild(finalImage)
 
-    // $.get("https://api.imagga.com/v1/colors?url=" + finalImage.src, function(data, status){
-    //   alert("Data: " + data + "\nStatus: " + status);
-    // });
 
     var imageUrl= "http://images.nypl.org/index.php?id=" + result.imageID + "%26t%3Dw"
 
@@ -115,7 +112,16 @@ function doTheThing(result, i) {
     }
 
     $.ajax(getColorScheme).done(function (response) {
-      console.log(response.results[0].info.image_colors);
+      var colorArray = response.results[0].info.image_colors
+      for (var i = 0; i < colorArray.length; i++) {
+        var htmlColor = colorArray[i].html_code;
+        var colorResult = document.createElement("div")
+        var colorClass = document.createAttribute("class")
+        colorResult.setAttributeNode(colorClass)
+        colorClass.value = "colorResult result" + [i]
+        colorResult.setAttribute("style", "background-color:" + htmlColor)
+        document.getElementsByClassName("colorScheme")[0].appendChild(colorResult)
+      }
     });
 
     console.log(result.title);
