@@ -91,8 +91,25 @@ function doTheThing(result, i) {
     finalImage.src = "http://images.nypl.org/index.php?id=" + result.imageID + "&t=w"
     document.getElementsByClassName("selectedImage")[0].appendChild(finalImage)
 
-    $.get("https://api.imagga.com/v1/colors?url=" + finalImage.src, function(data, status){
-      alert("Data: " + data + "\nStatus: " + status);
+    // $.get("https://api.imagga.com/v1/colors?url=" + finalImage.src, function(data, status){
+    //   alert("Data: " + data + "\nStatus: " + status);
+    // });
+
+
+    var getColorScheme = {
+      "async": true,
+      "crossDomain": true,
+      "url": "https://api.imagga.com/v1/colors?url=" + finalImage.src,
+      "method": "GET",
+      "headers": {
+        // "basic": "YWNjXzc0MjQ5MmI1ZDMxZDk0ZTo4ZWZjZjk2ZDNhYWFiN2Q5ZWMwYjE1NjljZTg0NjVhZg==",
+        "authorization": "Basic YWNjXzc0MjQ5MmI1ZDMxZDk0ZTo4ZWZjZjk2ZDNhYWFiN2Q5ZWMwYjE1NjljZTg0NjVhZg==",
+        "cache-control": "no-cache",
+      }
+    }
+
+    $.ajax(getColorScheme).done(function (response) {
+      console.log(response);
     });
 
 
