@@ -125,6 +125,7 @@ a{
   border-width: thin;
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 }
 .result1{
 }
