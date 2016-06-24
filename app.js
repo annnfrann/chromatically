@@ -81,8 +81,18 @@ function doTheThing(result, i) {
     newClass.value = "selectedImage"
     document.getElementsByClassName("results")[0].appendChild(selectedImage)
     var finalImage = document.createElement("img")
+
+    console.log(finalImage);
+
     finalImage.src = "http://images.nypl.org/index.php?id=" + result.imageID + "&t=w"
     document.getElementsByClassName("selectedImage")[0].appendChild(finalImage)
+
+    $.get("https://api.imagga.com/v1/colors?url=" + finalImage.src, function(data, status){
+      alert("Data: " + data + "\nStatus: " + status);
+    });
+
+
+
     var colorScheme = document.createElement("div")
     var anotherClass = document.createAttribute("class")
     colorScheme.setAttributeNode(anotherClass)
