@@ -95,30 +95,29 @@ function doTheThing(result, i) {
     //   alert("Data: " + data + "\nStatus: " + status);
     // });
 
-
-    var getColorScheme = {
-      "async": true,
-      "crossDomain": true,
-      "url": "https://api.imagga.com/v1/colors?url=" + finalImage.src,
-      "method": "GET",
-      "headers": {
-        // "basic": "YWNjXzc0MjQ5MmI1ZDMxZDk0ZTo4ZWZjZjk2ZDNhYWFiN2Q5ZWMwYjE1NjljZTg0NjVhZg==",
-        "authorization": "Basic YWNjXzc0MjQ5MmI1ZDMxZDk0ZTo4ZWZjZjk2ZDNhYWFiN2Q5ZWMwYjE1NjljZTg0NjVhZg==",
-        "cache-control": "no-cache",
-      }
-    }
-
-    $.ajax(getColorScheme).done(function (response) {
-      console.log(response);
-    });
-
-
+    var imageUrl= "http://images.nypl.org/index.php?id=" + result.imageID + "%26t%3Dw"
 
     var colorScheme = document.createElement("div")
     var anotherClass = document.createAttribute("class")
     colorScheme.setAttributeNode(anotherClass)
     anotherClass.value = "colorScheme"
     document.getElementsByClassName("results")[0].appendChild(colorScheme)
+
+    var getColorScheme = {
+      "async": true,
+      "crossDomain": true,
+      "url": "https://api.imagga.com/v1/colors?url=" + imageUrl,
+      "method": "GET",
+      "headers": {
+        "authorization": "Basic YWNjXzc0MjQ5MmI1ZDMxZDk0ZTo4ZWZjZjk2ZDNhYWFiN2Q5ZWMwYjE1NjljZTg0NjVhZg==",
+        "cache-control": "no-cache",
+      }
+    }
+
+    $.ajax(getColorScheme).done(function (response) {
+      console.log(response.results[0].info.image_colors);
+    });
+
     console.log(result.title);
     var footer = document.createElement("footer")
     footer.innerHTML = 'anna lewis made this. here is her <a href="https://github.com/annnfrann/">github</a>.'
