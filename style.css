@@ -110,7 +110,7 @@ a{
   border-width: thin;
   display: flex;
 }
-.selectedImage a img{
+.selectedImage a{
   display: flex;
   object-fit: scale-down;
   justify-content: center;
