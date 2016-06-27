@@ -47,7 +47,6 @@ function appendImage(result, i) {
   box.setAttributeNode(createClass)
   document.getElementsByClassName("container")[0].appendChild(box)
   var photo = document.createElement("img")
-  console.log(result.imageID);
   photo.src = "http://images.nypl.org/index.php?id=" + result.imageID + "&t=w"
   document.getElementsByClassName("box")[i].appendChild(photo)
   doTheThing(result, i)
@@ -89,9 +88,7 @@ function doTheThing(result, i) {
     imageLink.setAttributeNode(linkClass)
     linkClass.value = "imageLink"
     document.getElementsByClassName("selectedImage")[0].appendChild(imageLink)
-    console.log(result.itemLink);
-    console.log(document.getElementsByClassName("linkClass"));
-    imageLink.href = '"' + result.itemLink + '"'
+    imageLink.href = result.itemLink
     var finalImage = document.createElement("img")
 
     finalImage.src = "http://images.nypl.org/index.php?id=" + result.imageID + "&t=w"
