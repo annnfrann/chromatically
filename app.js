@@ -3,7 +3,7 @@ function search (){
     var userInput = document.getElementById("userInput").value
     userInput = userInput.trim()
     if (userInput === "") {
-      alert("pls search for a thing")
+      alert("please search for a thing")
     } else {
       var settings = {
         "async": true,
