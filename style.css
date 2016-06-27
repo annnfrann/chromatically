@@ -110,7 +110,16 @@ a{
   border-width: thin;
   display: flex;
 }
-.selectedImage img{
+.selectedImage a img{
+  display: flex;
+  object-fit: scale-down;
+  justify-content: center;
+  flex-shrink: 1;
+  min-width: 99%;
+  min-height: 99%;
+}
+a img{
+  display: flex;
   object-fit: scale-down;
   justify-content: center;
   flex-shrink: 1;
@@ -140,6 +149,7 @@ a{
 .colorResult{
   width: 20%;
   height: 100%;
+  border-radius: 0px;
 }
 .about{
   background-color: aliceblue;

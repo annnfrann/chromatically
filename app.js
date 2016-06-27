@@ -84,12 +84,19 @@ function doTheThing(result, i) {
     selectedImage.setAttributeNode(newClass)
     newClass.value = "selectedImage"
     document.getElementsByClassName("results")[0].appendChild(selectedImage)
+    var imageLink = document.createElement("a")
+    var linkClass = document.createAttribute("class")
+    imageLink.setAttributeNode(linkClass)
+    linkClass.value = "imageLink"
+    document.getElementsByClassName("selectedImage")[0].appendChild(imageLink)
+    console.log(result.itemLink);
+    console.log(document.getElementsByClassName("linkClass"));
+    imageLink.href = '"' + result.itemLink + '"'
     var finalImage = document.createElement("img")
 
-    console.log(finalImage);
-
     finalImage.src = "http://images.nypl.org/index.php?id=" + result.imageID + "&t=w"
-    document.getElementsByClassName("selectedImage")[0].appendChild(finalImage)
+    finalImage.title = result.title
+    document.getElementsByClassName("imageLink")[0].appendChild(finalImage)
 
 
     var imageUrl= "http://images.nypl.org/index.php?id=" + result.imageID + "%26t%3Dw"
@@ -124,7 +131,6 @@ function doTheThing(result, i) {
       }
     });
 
-    console.log(result.title);
     var footer = document.createElement("footer")
     footer.innerHTML = 'anna lewis made this. here is her <a href="https://github.com/annnfrann/">github</a>.'
     document.getElementById("background").appendChild(footer)
