@@ -123,6 +123,7 @@ function doTheThing(result, i) {
         var colorClass = document.createAttribute("class")
         colorResult.setAttributeNode(colorClass)
         colorClass.value = "colorResult result" + [i]
+        colorResult.title = htmlColor
         colorResult.setAttribute("style", "background-color:" + htmlColor)
         document.getElementsByClassName("colorScheme")[0].appendChild(colorResult)
       }
